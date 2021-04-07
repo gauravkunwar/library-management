@@ -1,0 +1,91 @@
+{% extends 'base.html' %} {% block title %}Transaction List{% endblock %} {% block transaction_active %}active{% endblock %} {% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <ul class="nav nav-pills" style="margin-bottom: 10px; margin-top: 10px;">
+                <li role="presentation">
+                    <a href="/maketransaction/">Borrow a Book</a>
+                </li>
+                <li role="presentation" class="active">
+                    <a href="/viewtransaction/">View active Transactions</a>
+                </li>
+                <li role="presentation">
+                    <a href="/transaction/history/">Transaction History</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Search by member</h3><br> {% if error_message %}
+
+                    <p>
+                        <strong>{{ error_message }}</strong>
+                    </p>
+                    {% endif %}
+
+                    <form class="form-horizontal" action="{% url 'viewtransaction' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %} {% include 'form_template.html' %}
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p style="text-align: center" class="lead"><strong>Today's Date: {{today}}</strong></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Member ID</th>
+                                <th>Book</th>
+                                <th>Date of Issue</th>
+                                <th>Due Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        {% for p in transaction%}
+
+                        <tbody>
+                            <tr>
+                                <td><a href="/viewmember/{{p.member.mem_no}}/" title='Click for more detail'>{{p.member}}</td>
+                                <td>
+                                    <a href="/viewbook/{{p.book.id}}/" title='Click for more detail'>{{p.book}}
+                                    </td>
+                                    <td>{{p.date_of_Issue}}</td>
+                                    {% if today < p.due_Date %}
+                                    <td><p class="bg-danger">{{p.due_Date}}</p></td>
+                                    {% else %}
+                                    <td><p class="bg-success">{{p.due_Date}}</td>
+                                    {% endif %}
+                                    <td>
+                                        <a href='/returnbook/{{p.id}}' class="btn btn-danger btn-sm" onclick="return confirm('Click &lsquo;OK&rsquo; to return the book.');");>
+                                            <span class="glyphicon glyphicon-erase"></span> Return
+                                        </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Transaction{% endblock %}
+{% block transaction_active %}active{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-pills" style="margin-bottom: 10px; margin-top: 10px;">
+                <li role="presentation" class="active"><a href="/maketransaction/">Borrow a Book</a></li>
+                <li role="presentation"><a href="/viewtransaction/">View active Transactions</a></li>
+                <li role="presentation"><a href="/transaction/history/">Transaction History</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--  -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+        <h3>Borrow a Book</h3>
+        <br>
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+          <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+          </form>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+            <p class="lead"><strong>Rules: </strong></p>
+            <p class="text-info">1. One member can only borrow 5 books at a time.</p>
+            <p class="text-info">2. Book shall be returned without any physical damage within 15 days.</p>
+            <br>
+            <p class="text-info">3. If failed to return within 15 days, fine will be taken accordingly.</p>
+            <p class="text-warning">&emsp;&emsp;&emsp;a. Within 5 days from return date --> $0.5/day.</p>
+            <p class="text-warning">&emsp;&emsp;&emsp;b. Within 15 days from return date --> $1/day.</p>
+            <p class="text-warning">&emsp;&emsp;&emsp;c. Within 30 days from return date --> $2/day.</p>
+            <p class="text-warning">&emsp;&emsp;&emsp;d. More than 30 days from return date --> $5/day.</p>
+        </div>
+    </div>
+</div>
+    </div>
+
+        </div>
+      </div>
+    </div>
+{% endblock %}

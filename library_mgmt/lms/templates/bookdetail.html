@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Book Details{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+      <!-- Photo section -->
+        <div class="col-sm-4 col-md-3" style="margin-top: 10px;">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  <img class="img-responsive" src="/media/{{book.image}}" alt="Book Image" width="300" height="200">
+                </div>
+            </div>
+        </div>
+      <!-- For description -->
+        <div class="col-sm-4 col-md-5" style="margin-top: 10px;">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h4><strong>"{{book.name}}"</strong></h4>
+              <br><p><strong>&emsp;&emsp;&emsp;Rack number: {{book.rack_number}}</strong></p>
+              <br><p><strong>&emsp;&emsp;&emsp;Price: {{book.price}}</strong></p>
+              <br><p><strong>&emsp;&emsp;&emsp;Available: {{book.available}}</strong></p>
+            </div>
+          </div>
+        </div>
+      <!-- Description Box -->
+        <div class="col-sm-4 col-md-5" style="margin-top: 10px;">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p><strong>Description:</strong></p>
+              <p>{{book.description}}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

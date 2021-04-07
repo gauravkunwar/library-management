@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Books' List{% endblock %}
+{% block book_active %}active{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-pills" style="margin-bottom: 10px; margin-top: 10px;">
+                <li role="presentation" class="active"><a href="/viewbook/">View all Books</a></li>
+                <li role="presentation"><a href="/addbook/">Add a book</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                	<table class="table table-hover">
+                		<thead>
+							  <tr>
+								<th>Author</th>
+								<th>Name</th>
+								<th>Price</th>
+								<th>Rack number</th>
+								<th>Edition</th>
+								<th>Available</th>
+								<th></th>
+								<th></th>
+							  </tr>
+						</thead>
+							{% for p in book%}
+						<tbody>
+							  <tr>
+							  	<td><a href="{{p.id}}/" title='Click for more detail'>{{p.name}}</a></td>
+								<td>{{p.author}}</td>
+								<td>{{p.price}}</td>
+								<td>{{p.rack_number}}</td>
+								<td>{{p.edition}}</td>
+								<td>{{p.available}} / {{p.total}}</td>
+								<td><a href='/update/book/{{p.id}}' class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> Update</a></td>
+								<td><a href='/delete/book/{{p.id}}' class="btn btn-danger btn-sm" onclick="return confirm('Click &lsquo;OK&rsquo; to delete.');");"> <span class="glyphicon glyphicon-erase"></span> Delete</a></td>
+							  </tr>
+								{% endfor %}
+						</tbody>
+  					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

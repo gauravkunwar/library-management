@@ -1,0 +1,11 @@
+{% for field in forms %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+        	<!-- for error display -->
+            <span class="text-danger small">{{ field.errors }}</span>
+        </div>
+        <!-- tag (example: name) -->
+        <label class="control-label col-md-2" for="title">{{ field.label_tag }}</label>
+        <div class="col-md-8">{{ field }}</div>
+    </div>
+{% endfor %}

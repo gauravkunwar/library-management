@@ -1,0 +1,26 @@
+{% extends 'base_visitor.html' %}
+{% load crispy_forms_tags %}
+{% block title %}{{title}}{% endblock %}
+{% block login_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+                    <h3>{{title}}</h3>
+                    <hr/>
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{forms|crispy}}
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-10">
+                                <button type="submit" class="btn btn-success">{{title}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+</div>
+{% endblock %}

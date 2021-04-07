@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Transaction List{% endblock %}
+{% block transaction_active %}active{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-100">
+            <ul class="nav nav-pills" style="margin-bottom: 10px; margin-top: 10px;">
+                <li role="presentation"><a href="/maketransaction/">Borrow a Book</a></li>
+                <li role="presentation"><a href="/viewtransaction/">View active Transactions</a></li>
+                <li role="presentation" class="active"><a href="/transaction/history/">Transaction History</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+  <table class="table table-hover">
+	<thead>
+	  <tr>
+		<th>Member ID</th>
+		<th>Book</th>
+		<th>Date of Issue</th>
+		<th>Due Date</th>
+		<th>Current Status</th>
+	  </tr>
+	</thead>
+	{% for p in transaction%}
+	<tbody>
+	  <tr>
+		<td><a href="/viewmember/{{p.member.mem_no}}/" title='Click for more detail'>{{p.member}}</td>
+		<td><a href="/viewbook/{{p.book.id}}/" title='Click for more detail'>{{p.book}}</td>
+		<td>{{p.date_of_Issue}}</td>
+		<td>{{p.due_Date}}</td>
+		{% if p.status == 'borrowed' %}
+		<td><p class="bg-danger">Borrowed</p></td>
+		{% else %}
+		<td><p class="bg-success">Returned</p></td>
+			{% endif %}
+	  </tr>
+		{% endfor %}
+	</tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

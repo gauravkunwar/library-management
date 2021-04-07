@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Members' List{% endblock %}
+{% block member_active %}active{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-pills" style="margin-bottom: 10px; margin-top: 10px;">
+                <li role="presentation" class="active"><a href="/viewmember/">View all Members</a></li>
+                <li role="presentation"><a href="/addmember/">Add a member</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                	<table class="table table-hover">
+                		<thead>
+                			<tr>
+                			<th>ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>Date of membership</th>
+							<th>Department</th>
+							<th>Phone</th>
+							<th>Books Issued</th>
+							<th></th>
+					 		<th></th>
+						  	</tr>
+						</thead>
+							{% for p in member%}
+						<tbody>
+						  	<tr>
+						  	<td>{{p.mem_no}}</td>
+							<td>{{p.name}}</td>
+							<td>{{p.address}}</td>
+							<td>{{p.date_of_Membership}}</td>
+							<td>{{p.department}}</td>
+							<td>{{p.phone}}</td>
+							<td>{{p.number_of_Books_Issued}} / {{p.maximum_Book_Limit}}</td>
+							<td><a href='/update/member/{{p.mem_no}}' class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> Update</a></td>
+							<td><a href='/delete/member/{{p.mem_no}}' class="btn btn-danger btn-sm" onclick="return confirm('Click &lsquo;OK&rsquo; to delete.');");> <span class="glyphicon glyphicon-erase"></span> Delete</a></td>
+						  	</tr>
+									{% endfor %}
+						</tbody>
+  					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

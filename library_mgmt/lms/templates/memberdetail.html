@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Member Details{% endblock %}
+{% block body %}
+<br>
+<div class="container-fluid">
+    <div class="col-sm-4 col-sm-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+      	
+        <center><h3 class="bg-success">Member Details</h3></center>
+					<table class="table table-hover">
+						<tr>
+							<th>Topic</th>
+							<th>Details</th>
+						</tr>
+						<tr>
+							<td>ID:</td>
+							<td>{{member.mem_no}}</a></td>
+						</tr>
+						<tr>
+							<td>Name:</td>
+							<td><strong>{{member.name}}</strong></a></td>
+						</tr>
+						<tr>
+							<td>Address:</td>
+							<td>{{member.address}}</td>
+						</tr>
+						<tr>
+							<td>Department:</td>
+							<td>{{member.department}}</td>
+						</tr>
+						<tr>
+							<td>Phone number:</td>
+							<td>{{member.phone}}</td>
+						</tr>
+						<tr>
+							<td>Membership Date:</td>
+							<td>{{member.date_of_Membership}}</td>
+						</tr>
+						<tr>
+							<td>Books issued now:</td>
+							<td>{{member.number_of_Books_Issued}} / {{member.maximum_Book_Limit}}</td>
+						</tr>
+					</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

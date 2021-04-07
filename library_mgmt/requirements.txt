@@ -1,0 +1,10 @@
+certifi==2019.3.9
+chardet==3.0.4
+Django==1.11.12
+django-crispy-forms==1.7.2
+gunicorn==19.7.1
+idna==2.8
+Pillow==5.1.0
+pytz==2018.9
+requests==2.21.0
+urllib3==1.24.1

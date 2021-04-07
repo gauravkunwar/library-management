@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Transaction{% endblock %}
+{% block transaction_active %}active{% endblock %}
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-pills" style="margin-bottom: 10px; margin-top: 10px;">
+                <li role="presentation"><a href="/maketransaction/">Borrow a Book</a></li>
+                <li role="presentation"><a href="/viewtransaction/">View active Transactions</a></li>
+                <li role="presentation"><a href="/transaction/history/">Transaction History</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+      	
+        <center><h3 class="bg-danger">Alert! You have been fined.</h3></center>
+					<table class="table table-hover">
+						<tr>
+							<th>Topic</th>
+							<th>Details</th>
+						</tr>
+						<tr>
+							<td>Book's name:</td>
+							<td><a href="/viewbook/{{transaction.book.id}}/" title='Click for more detail'>{{transaction.book}}</a></td>
+						</tr>
+						<tr>
+							<td>Member's ID:</td>
+							<td><a href="/viewmember/{{transaction.member.mem_no}}/" title='Click for more detail'>{{transaction.member}}</a></td>
+						</tr>
+						<tr>
+							<td>Due Date:</td>
+							<td>{{transaction.due_Date}}</td>
+						</tr>
+						<tr>
+							<td>Today:</td>
+							<td>{{today}}</td>
+						</tr>
+						<tr>
+							<td>Number of days passed:</td>
+							<td>{{num_days_passed}}</td>
+						</tr>
+						<tr>
+							<td>Amount of fine:</td>
+							<td><strong>${{fine}}</strong></td>
+						</tr>
+					</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
