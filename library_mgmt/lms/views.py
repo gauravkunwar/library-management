@@ -175,10 +175,10 @@ def returnbook(request, pid):
 	duedate=transaction.due_Date
 	today = datetime.now().date()	
 	if duedate < today:
-		print "Fine"
+		print ("Fine")
 		days_passed = today - duedate
 		num_days_passed = days_passed.days
-		print num_days_passed
+		print (num_days_passed)
 		if num_days_passed < 6: #first 5 days
 			fine = num_days_passed*0.5 #$0.5 fine
 		elif num_days_passed <16: #first 15 days
@@ -187,7 +187,7 @@ def returnbook(request, pid):
 			fine = num_days_passed*2
 		else:
 			fine = num_days_passed*5
-		print fine
+		print (fine)
 		return render(request,'fine.html',{
 			'num_days_passed':num_days_passed,
 			'fine':fine,

@@ -22,10 +22,9 @@ Can do:
 Has/Uses:
 1. Simple UI
 2. Django
-3. Python 2.7
+3. Python 3
 
 Future changes:
 
-1. Use Python 3
-2. Use select2 for dropdown with search feature
+1. Use select2 for dropdown with search feature
 
