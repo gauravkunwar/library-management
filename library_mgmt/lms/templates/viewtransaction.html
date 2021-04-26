@@ -70,9 +70,9 @@
                                     </td>
                                     <td>{{p.date_of_Issue}}</td>
                                     {% if today < p.due_Date %}
-                                    <td><p class="bg-danger">{{p.due_Date}}</p></td>
+                                    <td><p class="bg-success">{{p.due_Date}}</p></td>
                                     {% else %}
-                                    <td><p class="bg-success">{{p.due_Date}}</td>
+                                    <td><p class="bg-danger">{{p.due_Date}}</td>
                                     {% endif %}
                                     <td>
                                         <a href='/returnbook/{{p.id}}' class="btn btn-danger btn-sm" onclick="return confirm('Click &lsquo;OK&rsquo; to return the book.');");>
