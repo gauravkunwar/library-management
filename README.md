@@ -14,17 +14,14 @@ Can do:
 
 1. Add/update users and books
 2. Lend books, track time, calculate fine if returned late
-3. View active transactions
+3. View/Search active transactions
 4. Search borrowed books (transaction history)
 5. Number of books issued per person
-6. Book stocks
+6. Book stocks (image, location, pricing)
 
 Has/Uses:
-1. Simple UI
+
+1. Simple UI (Bootstrap, Select2)
 2. Django
 3. Python 3
-
-Future changes:
-
-1. Use select2 for dropdown with search feature
 
